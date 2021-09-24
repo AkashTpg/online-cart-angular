@@ -1,1 +1,24 @@
-<p>product-dashboard works!</p>
+<div class="productDashboard mtd-40">
+    <div style="max-width: 1280px">
+        <div class="productContainer">
+            <div class="item" *ngFor="let product of product$ | async">
+                <div>
+                    <h3>{{product.name}}</h3>
+                    <p>Rating : {{product.rating | rating}}</p>
+                    <h4>Price : Rs {{product.price}}</h4>
+                    <!-- {{product.uuid}} -->
+                </div>
+                <div class="viewMoreSection">
+                    <a routerLink="/product/{{product.uuid}}">View</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="center">
+    <div class="pagination">
+        <a (click)="prevPage()">&laquo;</a>
+        <a *ngFor="let page of pageArray; let i = index" [ngClass]="{'active': i === currentPageNum}" (click)="goTopage(i)">{{i}}</a>
+        <a (click)="nextPage()">&raquo;</a>
+    </div>
+</div>
