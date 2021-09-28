@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
       this._loginService.authenticateUser(loginForm).subscribe(
         data => {
           if (data.accessToken != null) {
-            localStorage.setItem('token', JSON.stringify(data.accessToken));
+            localStorage.setItem('token', data.accessToken);
             console.log('get token: ', localStorage.getItem('token'));
             this._router.navigate(['/','home']);
           } else {
