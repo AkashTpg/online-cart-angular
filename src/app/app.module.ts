@@ -11,6 +11,7 @@ import { RegisterComponent } from './register/register.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Router } from '@angular/router';
 import { RatingPipe } from './_helper/rating.pipe';
+import { OrderHistoryComponent } from './order-history/order-history.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { RatingPipe } from './_helper/rating.pipe';
     PageNotFoundComponent,
     LoginComponent,
     RegisterComponent,
-	RatingPipe
+	RatingPipe,
+ OrderHistoryComponent
   ],
   imports: [
     BrowserModule,

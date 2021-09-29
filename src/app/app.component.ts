@@ -26,5 +26,10 @@ export class AppComponent {
     this.productService.setCurrentCategory(uuid);
     this.productService.getProductsBycategory(uuid);
   }
+
+  logout() {
+    localStorage.removeItem('token');
+    this.router.navigate(['/','login']);
+  }
   
 }
