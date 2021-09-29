@@ -26,7 +26,12 @@ export class AppComponent {
     this.productService.setCurrentCategory(uuid);
     this.productService.getProductsBycategory(uuid);
   }
-
+  searchProductByName(keyword: string){
+    if(keyword.length>=3){
+      this.productService.getTotalPagesBySearch(keyword);
+      this.productService.getProductsByName(keyword);
+    }
+  }
   logout() {
     localStorage.removeItem('token');
     this.router.navigate(['/','login']);
