@@ -13,9 +13,18 @@
                             fill="#fff"></path>
                     </svg>
                     <span>Cart</span>
-                </a>
+                </a>&nbsp;&nbsp;&nbsp;&nbsp;
+
+                <a [routerLink] ="['/orderHistory']" routerLinkActive="active">
+                    <span>Order History</span>
+                </a>&nbsp;&nbsp;&nbsp;&nbsp;
+                <button  class="" (click)="logout()">
+                    Logout
+                </button>
             </div>
+            
         </div>
+       
     </div>
 </header>
 
