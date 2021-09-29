@@ -26,8 +26,11 @@
                 <a [routerLink] ="['/orderHistory']" routerLinkActive="active">
                     <span>Order History</span>
                 </a>&nbsp;&nbsp;&nbsp;&nbsp;
-                <button  class="" (click)="logout()">
+                <button *ngIf="showLogin" class="" (click)="logout()">
                     Logout
+                </button>
+                <button  *ngIf="!showLogin" class="" (click)="login()">
+                    Login
                 </button>
             </div>
             

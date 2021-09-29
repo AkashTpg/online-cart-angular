@@ -11,6 +11,7 @@ import { ProductService } from './_services/product.service';
 })
 export class AppComponent {
   title = 'online-cart-angular';
+  showLogin = false;
   catgoriesList:Categories[]=[];
   
 
@@ -20,6 +21,8 @@ export class AppComponent {
     this.categoryService.getCategoriesList().subscribe(data=>this.catgoriesList=data);
     this.productService.getProducts();
     this.productService.getTotalPages();
+    this.showLogin = localStorage.hasOwnProperty('token');
+    console.log("localStorage.hasOwnProperty('token')" + localStorage.hasOwnProperty('token'));
   }
   changeCategory(uuid:string){
     this.router.navigate(['/home']);
@@ -34,6 +37,11 @@ export class AppComponent {
   }
   logout() {
     localStorage.removeItem('token');
+    this.showLogin =false;
+    this.router.navigate(['/','login']);
+  }
+
+  login() {
     this.router.navigate(['/','login']);
   }
   
