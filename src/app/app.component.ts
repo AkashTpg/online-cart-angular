@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Categories } from './_models/Categories';
+import { CartService } from './_services/cart.service';
 import { CategoriesService } from './_services/categories.service';
 import { ProductService } from './_services/product.service';
+
 
 @Component({
   selector: 'app-root',
@@ -12,19 +14,27 @@ import { ProductService } from './_services/product.service';
 export class AppComponent {
   title = 'online-cart-angular';
   catgoriesList:Categories[]=[];
-  
+  //count:number;
+  public totalItem : number = 0;
+  public searchTerm !: string;
 
-  constructor(private categoryService: CategoriesService, private productService:ProductService, private router: Router) { }
+  constructor(private categoryService: CategoriesService, private productService:ProductService,
+     private router: Router,private _cartService:CartService) { }
   
   ngOnInit(){
     this.categoryService.getCategoriesList().subscribe(data=>this.catgoriesList=data);
     this.productService.getProducts();
     this.productService.getTotalPages();
+    this._cartService.getProducts()
+    .subscribe(res=>{
+      this.totalItem = res.length;
+    })
   }
   changeCategory(uuid:string){
     this.router.navigate(['/home']);
     this.productService.setCurrentCategory(uuid);
     this.productService.getProductsBycategory(uuid);
   }
+  
   
 }

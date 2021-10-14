@@ -11,6 +11,9 @@ import { RegisterComponent } from './register/register.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Router } from '@angular/router';
 import { RatingPipe } from './_helper/rating.pipe';
+import { ProductCartComponent } from './product-cart/product-cart.component';
+import { ProductOrderComponent } from './product-order/product-order.component';
+
 
 @NgModule({
   declarations: [
@@ -20,7 +23,9 @@ import { RatingPipe } from './_helper/rating.pipe';
     PageNotFoundComponent,
     LoginComponent,
     RegisterComponent,
-	RatingPipe
+	RatingPipe,
+ ProductCartComponent,
+ ProductOrderComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +33,7 @@ import { RatingPipe } from './_helper/rating.pipe';
     ReactiveFormsModule,
     FormsModule,
     RouterModule,
-    HttpClientModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

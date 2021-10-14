@@ -15,6 +15,7 @@ export class LoginService {
   }
   authenticateUser(loginModel: Login) {
     //user will be authneticated here
+    alert("authenticateUser");
    return  this._http.post<any>(this._loginUrl, loginModel);
   }
 
