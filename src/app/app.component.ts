@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Categories } from './_models/Categories';
+import { CartService } from './_services/cart.service';
 import { CategoriesService } from './_services/categories.service';
 import { ProductService } from './_services/product.service';
+
 
 @Component({
   selector: 'app-root',
@@ -13,9 +15,12 @@ export class AppComponent {
   title = 'online-cart-angular';
   showLogin = false;
   catgoriesList:Categories[]=[];
-  
+  //count:number;
+  public totalItem : number = 0;
+  public searchTerm !: string;
 
-  constructor(private categoryService: CategoriesService, private productService:ProductService, private router: Router) { }
+  constructor(private categoryService: CategoriesService, private productService:ProductService,
+     private router: Router,private _cartService:CartService) { }
   
   ngOnInit(){
     this.categoryService.getCategoriesList().subscribe(data=>this.catgoriesList=data);
@@ -44,5 +49,6 @@ export class AppComponent {
   login() {
     this.router.navigate(['/','login']);
   }
+  
   
 }
