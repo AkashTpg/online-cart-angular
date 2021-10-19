@@ -7,16 +7,12 @@
         <thead>
           <tr  >
             <th scope="col">Product</th>
-            <th scope="col">Image</th>
             <th scope="col">Price</th>
           </tr>
         </thead>
         <tbody>
           <tr  *ngFor='let item of products'>
             <td>{{item.name}}</td>
-            <td><img  
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPeaVfagECArkf__e4_70x4R_Fx2wtY1D7bw&usqp=CAU" 
-                alt="" style="width: 50px; height:50px"></td>
             <td>{{item.price}}</td>
           </tr>
         </tbody>

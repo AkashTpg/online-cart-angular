@@ -28,7 +28,12 @@ export class AppComponent {
     this.productService.getTotalPages();
     this.showLogin = localStorage.hasOwnProperty('token');
     console.log("localStorage.hasOwnProperty('token')" + localStorage.hasOwnProperty('token'));
+	this._cartService.getProducts()
+    .subscribe(res=>{
+      this.totalItem = res.length;
+    });
   }
+ 
   changeCategory(uuid:string){
     this.router.navigate(['/home']);
     this.productService.setCurrentCategory(uuid);
