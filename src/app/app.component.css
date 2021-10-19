@@ -35,3 +35,18 @@
     margin: auto;
     cursor: pointer;
 }
+.cartBadge{
+    position: absolute;
+    top: 22px;
+    right: 10px;
+}
+.loginButton, .orderHistory{
+    background: #ff9f00;
+    width: 100px;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    color: #fff;
+    font-weight: 500;
+}
+.orderHistory{text-align: center;}

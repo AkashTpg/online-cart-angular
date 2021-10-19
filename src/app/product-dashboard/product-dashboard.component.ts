@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Categories } from '../_models/Categories';
 import { Product } from '../_models/Product';
+import { CategoriesService } from '../_services/categories.service';
 import { ProductService } from '../_services/product.service';
+import { Router } from '@angular/router';
+
 
 
 
@@ -18,12 +22,13 @@ export class ProductDashboardComponent implements OnInit {
   totalPages:number; 
   currentPageNum:number = 0;
   pageArray:number[];
-
-  constructor(private productService:ProductService) {
+  catgoriesList:Categories[]=[];
+  constructor(private categoryService: CategoriesService,  private router: Router, private productService:ProductService) {
      
   }
 
   ngOnInit(): void {
+    this.categoryService.getCategoriesList().subscribe(data=>this.catgoriesList=data);
     this.product$ = this.productService.products;
     this.page$ = this.productService.page;
     this.totalPage$ = this.productService.totalPage;
@@ -36,6 +41,13 @@ export class ProductDashboardComponent implements OnInit {
   // getNumberOfPages(){
   //   this.productService.getTotalPages().subscribe(data=>{this.totalPages=Number(data); this.pageArray = Array(this.totalPages).fill(0);});
   // }
+
+  changeCategory(uuid:string){
+    this.router.navigate(['/home']);
+    this.productService.setCurrentCategory(uuid);
+    this.productService.getProductsBycategory(uuid);
+  }
+  
   goTopage(i:number){
     console.log("go to page : "+i);
     this.currentPageNum = i;

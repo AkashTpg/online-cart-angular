@@ -13,6 +13,15 @@
         </div>
         <div class="cartSection">
             <div class="block">
+                <a [routerLink] ="['/orderHistory']" routerLinkActive="active" class="orderHistory">
+                    Order History
+                </a>&nbsp;&nbsp;&nbsp;&nbsp;
+                <button *ngIf="showLogin" class="loginButton" (click)="logout()">
+                    Logout
+                </button>
+                <button  *ngIf="!showLogin" class="loginButton" (click)="login()">
+                    Login
+                </button>
                 <a class="" routerLink="/cart">
                     <!--<svg class="cartIcon" width="14"
                         height="14" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
@@ -25,22 +34,12 @@
                   <span>Cart</span>
                 -->
                 <div  >
-                    <button routerLink="cart" class="btn btn-primary">
+                    <button routerLink="cart" class="btn" style="color:#fff">
                         <i style="font-size: 30px;" class="fas fa-cart-plus"></i>
-                        <div *ngIf="totalItem!=0" style="font-size: 10px;" class="badge bg-danger">{{totalItem}}</div>
+                        <div *ngIf="totalItem!=0" style="font-size: 10px;" class="badge bg-danger cartBadge">{{totalItem}}</div>
                     </button>
                 </div>  
                 </a>
-
-                <a [routerLink] ="['/orderHistory']" routerLinkActive="active">
-                    <span>Order History</span>
-                </a>&nbsp;&nbsp;&nbsp;&nbsp;
-                <button *ngIf="showLogin" class="" (click)="logout()">
-                    Logout
-                </button>
-                <button  *ngIf="!showLogin" class="" (click)="login()">
-                    Login
-                </button>
             </div>
             
         </div>
@@ -48,21 +47,6 @@
     </div>
 </header>
 
-<div class="categorySection">
-    <div class="block">
-        <div class="inner">
-            <div class="item" *ngFor="let categ of catgoriesList">
-                <a (click)="changeCategory(categ.uuid)">
-                    <div class="imgContainer">
-                        <div class="inner" style="height:64px;width:64px">
-                            <img class="_396cs4 _3exPp9" src="{{categ.url}}">
-                        </div>
-                    </div>
-                    <div class="xtXmba">{{categ.name}}</div>
-                </a>
-            </div>
-        </div>
-    </div>
-</div>
+
 
 <router-outlet></router-outlet>
