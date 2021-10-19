@@ -35,7 +35,7 @@
     </div>
 </div>
 <div class="center">
-    <div class="pagination" *ngIf="totalPages>0">
+    <div class="pagination" *ngIf="totalPages>1">
         <a (click)="prevPage()">&laquo;</a>
         <a *ngFor="let page of pageArray; let i = index" [ngClass]="{'active': i === currentPageNum}" (click)="goTopage(i)">{{i+1}}</a>
         <a (click)="nextPage()">&raquo;</a>
