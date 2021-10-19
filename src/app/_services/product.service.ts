@@ -54,6 +54,21 @@ export class ProductService {
       data=>{this.totalPageSubject.next(Number(data))}
     );
   }
+  getTotalPagesBySearch(keyword: string){
+    this.http.get('http://localhost:9090/products/getNumberOfPagesBySearch/'+this.pageSize+'/'+keyword+'').subscribe(
+      data=>{this.totalPageSubject.next(Number(data))}
+    );
+  }
+  getProductsByName(keyword:string){
+    this.http.get<Product[]>('http://localhost:9090/products/getProductBySearch/'+keyword+'/'+this.currentPage+'/'+this.pageSize+'').subscribe(
+      data => {
+        this.dataStore.productList = data;
+        this.productSubject.next(Object.assign({}, this.dataStore).productList);
+      },
+      error => console.log('Could not load Products.')
+    );
+   
+  }
   get products() {
     return this.productSubject.asObservable();
   }

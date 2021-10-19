@@ -13,6 +13,7 @@ import { ProductService } from './_services/product.service';
 })
 export class AppComponent {
   title = 'online-cart-angular';
+  showLogin = false;
   catgoriesList:Categories[]=[];
   //count:number;
   public totalItem : number = 0;
@@ -25,15 +26,28 @@ export class AppComponent {
     this.categoryService.getCategoriesList().subscribe(data=>this.catgoriesList=data);
     this.productService.getProducts();
     this.productService.getTotalPages();
-    this._cartService.getProducts()
-    .subscribe(res=>{
-      this.totalItem = res.length;
-    })
+    this.showLogin = localStorage.hasOwnProperty('token');
+    console.log("localStorage.hasOwnProperty('token')" + localStorage.hasOwnProperty('token'));
   }
   changeCategory(uuid:string){
     this.router.navigate(['/home']);
     this.productService.setCurrentCategory(uuid);
     this.productService.getProductsBycategory(uuid);
+  }
+  searchProductByName(keyword: string){
+    if(keyword.length>=3){
+      this.productService.getTotalPagesBySearch(keyword);
+      this.productService.getProductsByName(keyword);
+    }
+  }
+  logout() {
+    localStorage.removeItem('token');
+    this.showLogin =false;
+    this.router.navigate(['/','login']);
+  }
+
+  login() {
+    this.router.navigate(['/','login']);
   }
   
   

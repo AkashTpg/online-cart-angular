@@ -5,6 +5,7 @@ import { ProductDashboardComponent } from './product-dashboard/product-dashboard
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { OrderHistoryComponent } from './order-history/order-history.component';
 import { ProductCartComponent } from './product-cart/product-cart.component';
 import { ProductOrderComponent } from './product-order/product-order.component';
 
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: '', component: ProductDashboardComponent},
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
+  { path: 'orderHistory', component: OrderHistoryComponent },
   { path: '**', component: PageNotFoundComponent },  // Wildcard route for a 404 page
 ];
 

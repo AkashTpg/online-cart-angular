@@ -11,9 +11,9 @@ import { RegisterComponent } from './register/register.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Router } from '@angular/router';
 import { RatingPipe } from './_helper/rating.pipe';
+import { OrderHistoryComponent } from './order-history/order-history.component';
 import { ProductCartComponent } from './product-cart/product-cart.component';
 import { ProductOrderComponent } from './product-order/product-order.component';
-
 
 @NgModule({
   declarations: [
@@ -24,6 +24,7 @@ import { ProductOrderComponent } from './product-order/product-order.component';
     LoginComponent,
     RegisterComponent,
 	RatingPipe,
+ OrderHistoryComponent,
  ProductCartComponent,
  ProductOrderComponent
   ],
