@@ -3,16 +3,25 @@
         <div class="logo">
              <h3><a routerLink="/home" style="text-decoration:none; color:white">Online Store</a></h3>
         </div>
-        <div>
+        <div class="searchBOX">
             <div class="searchDiv">
                 <input type="text" class="search" #search placeholder="Search Products">
-                <button (click)="searchProductByName(search.value)" class="searchButton">
-                    <svg class="svgSearch" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path></svg>
-                </button>
             </div>
+            <button (click)="searchProductByName(search.value)" class="searchButton">
+                <svg class="svgSearch" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path></svg>
+            </button>
         </div>
         <div class="cartSection">
             <div class="block">
+                <a [routerLink] ="['/orderHistory']" routerLinkActive="active" class="orderHistory">
+                    Order History
+                </a>&nbsp;&nbsp;&nbsp;&nbsp;
+                <button *ngIf="showLogin" class="loginButton" (click)="logout()">
+                    Logout
+                </button>
+                <button  *ngIf="!showLogin" class="loginButton" (click)="login()">
+                    Login
+                </button>
                 <a class="" routerLink="/cart">
                     <!--<svg class="cartIcon" width="14"
                         height="14" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
@@ -25,22 +34,12 @@
                   <span>Cart</span>
                 -->
                 <div  >
-                    <button routerLink="cart" class="btn btn-primary">
+                    <button routerLink="cart" class="btn" style="color:#fff">
                         <i style="font-size: 30px;" class="fas fa-cart-plus"></i>
-                        <div *ngIf="totalItem!=0" style="font-size: 10px;" class="badge bg-danger">{{totalItem}}</div>
+                        <div *ngIf="totalItem!=0" style="font-size: 10px;" class="badge bg-danger cartBadge">{{totalItem}}</div>
                     </button>
                 </div>  
                 </a>
-
-                <a [routerLink] ="['/orderHistory']" routerLinkActive="active">
-                    <span>Order History</span>
-                </a>&nbsp;&nbsp;&nbsp;&nbsp;
-                <button *ngIf="showLogin" class="" (click)="logout()">
-                    Logout
-                </button>
-                <button  *ngIf="!showLogin" class="" (click)="login()">
-                    Login
-                </button>
             </div>
             
         </div>
@@ -48,21 +47,6 @@
     </div>
 </header>
 
-<div class="categorySection">
-    <div class="block">
-        <div class="inner">
-            <div class="item" *ngFor="let categ of catgoriesList">
-                <a (click)="changeCategory(categ.uuid)">
-                    <div class="imgContainer">
-                        <div class="inner" style="height:64px;width:64px">
-                            <img class="_396cs4 _3exPp9" src="{{categ.url}}">
-                        </div>
-                    </div>
-                    <div class="xtXmba">{{categ.name}}</div>
-                </a>
-            </div>
-        </div>
-    </div>
-</div>
+
 
 <router-outlet></router-outlet>

@@ -17,7 +17,7 @@
     outline: none;
     border: none;
     height: 40px;
-    
+    margin-left: 5px;
     border-radius: 3px;
 }
 .svgSearch{
@@ -35,3 +35,19 @@
     margin: auto;
     cursor: pointer;
 }
+.cartBadge{
+    position: absolute;
+    top: 22px;
+    right: 10px;
+}
+.loginButton, .orderHistory{
+    background: #ff9f00;
+    width: 100px;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    color: #fff;
+    font-weight: 500;
+}
+.orderHistory{text-align: center;}
+.searchBOX{display: flex;}

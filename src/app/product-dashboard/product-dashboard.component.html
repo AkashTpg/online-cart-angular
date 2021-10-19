@@ -1,5 +1,24 @@
+<div class="categorySection">
+    <div class="block">
+        <div class="inner">
+            <div class="item" *ngFor="let categ of catgoriesList">
+                <a (click)="changeCategory(categ.uuid)">
+                    <div class="imgContainer">
+                        <div class="inner" style="height:64px;width:64px">
+                            <img class="" src="{{categ.url}}">
+                        </div>
+                    </div>
+                    <div class="">{{categ.name}}</div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="productDashboard mtd-40">
     <div style="max-width: 1280px">
+        <div *ngIf="(product$ | async)?.length==0">
+            <h3>No product found</h3>
+        </div>
         <div class="productContainer">
             <div class="item" *ngFor="let product of product$ | async">
                 <div>
@@ -16,9 +35,9 @@
     </div>
 </div>
 <div class="center">
-    <div class="pagination">
+    <div class="pagination" *ngIf="totalPages>1">
         <a (click)="prevPage()">&laquo;</a>
-        <a *ngFor="let page of pageArray; let i = index" [ngClass]="{'active': i === currentPageNum}" (click)="goTopage(i)">{{i}}</a>
+        <a *ngFor="let page of pageArray; let i = index" [ngClass]="{'active': i === currentPageNum}" (click)="goTopage(i)">{{i+1}}</a>
         <a (click)="nextPage()">&raquo;</a>
     </div>
 </div>

@@ -5,7 +5,8 @@
 .productContainer{
     display: flex;
     flex-wrap: wrap;
-    /*justify-content: center*/
+    justify-content: center
+    
 }
 .productContainer .item{
     /* align-items: center; */
@@ -18,7 +19,7 @@
     transition: box-shadow .3s ease-in-out;
 }
 .productContainer .item{
-    flex-basis: calc(33% - 100px);
+    /* flex-basis: calc(33% - 100px); */
     flex-direction: column;
     justify-content: center;
     margin: 12px;
