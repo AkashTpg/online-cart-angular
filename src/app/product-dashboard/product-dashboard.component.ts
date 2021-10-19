@@ -4,6 +4,7 @@ import { Product } from '../_models/Product';
 import { ProductService } from '../_services/product.service';
 
 
+
 @Component({
   selector: 'app-product-dashboard',
   templateUrl: './product-dashboard.component.html',
@@ -18,7 +19,8 @@ export class ProductDashboardComponent implements OnInit {
   currentPageNum:number = 0;
   pageArray:number[];
 
-  constructor(private productService:ProductService) { 
+  constructor(private productService:ProductService) {
+     
   }
 
   ngOnInit(): void {

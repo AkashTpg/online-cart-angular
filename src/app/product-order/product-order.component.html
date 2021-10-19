@@ -1,0 +1,91 @@
+<div style="margin-bottom: 20px;">
+    <h4 style="background-color: rgb(110, 155, 240) ;color:white; text-align: center;">Your Order Details</h4>
+    </div>
+<div class="container">
+    <div>
+    <table class="table">
+        <thead>
+          <tr  >
+            <th scope="col">Product</th>
+            <th scope="col">Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr  *ngFor='let item of products'>
+            <td>{{item.name}}</td>
+            <td>{{item.price}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>                             
+
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <div class="form-group ">
+            <label for="inputName">Name</label>
+            <input type="text" class="form-control" formControlName="inputName"[ngClass]="{ 'is-invalid': submitted && f.inputName.errors }" placeholder="your Name">
+            <div *ngIf="submitted && f.inputName.errors" class="invalid-feedback">
+                <div *ngIf="f.inputName.errors.required">First Name is required</div>
+                <div *ngIf="f.inputName.errors?.minlength">Min 3 characters required</div>
+            </div>
+        </div>
+        
+        <div class="form-group mt-2">
+            <label for="inputNumber">10-digit Mobile Number</label>
+            <input type="text" class="form-control" formControlName="inputNumber"[ngClass]="{ 'is-invalid': submitted && f.inputNumber.errors }" placeholder="Phone Number">
+            <div *ngIf="submitted && f.inputNumber.errors" class="invalid-feedback">
+                <div *ngIf="f.inputNumber.errors.required">Phone is required</div>
+                <div *ngIf="f.inputNumber.errors.pattern">Not a valid number </div>
+            </div>
+        </div>
+        
+        <div class="form-group mt-2">
+          <label for="inputAddress1">Address 1</label>
+          <input type="text" class="form-control" formControlName="inputAddress1"[ngClass]="{ 'is-invalid': submitted && f.inputAddress1.errors }"  placeholder="1234 Main St" width="50">
+          <div *ngIf="submitted && f.inputAddress1.errors" class="invalid-feedback">
+              <div *ngIf="f.inputAddress1.errors.required">Address is required</div>
+              <div *ngIf="f.inputAddress1.errors?.maxlength">Max 200 characters allowed</div>
+          </div>
+        </div>
+        
+        <div class="form-group mt-2">
+          <label for="inputAddress2">Address 2</label>
+          <input type="text" class="form-control" formControlName="inputAddress2" placeholder="Apartment, studio, or floor">
+          <div *ngIf="submitted && f.inputAddress2.errors" class="invalid-feedback">
+            <div *ngIf="f.inputAddress2.errors?.maxlength">Max 200 characters allowed</div>
+        </div>
+        </div>
+        
+        
+        
+        <div class="form-group mt-2">
+            <label for="inputCity">City</label>
+            <input type="text" class="form-control" formControlName="inputCity"[ngClass]="{ 'is-invalid': submitted && f.inputCity.errors }">
+            <div *ngIf="submitted && f.inputCity.errors" class="invalid-feedback">
+                <div *ngIf="f.inputCity.errors.required">City is required</div>
+            </div>
+        </div>
+        
+          <div class="form-group mt-2">
+            <label for="inputState">State</label>
+            <select id="inputState" class="form-control" formControlName="inputState">
+              <!-- <option selected>Choose...</option> -->
+              <option>Delhi</option>
+              <option>Uttar-Pradesh</option>
+              <option>Punjab</option>
+              <option>Maharastra</option>
+            </select>
+           </div>
+           
+          <div class="form-group mt-2 ">
+            <label for="inputZip">Pin code</label>
+            <input type="text" class="form-control"formControlName="inputZip"[ngClass]="{ 'is-invalid': submitted && f.inputZip.errors }">
+            <div *ngIf="submitted && f.inputCity.errors" class="invalid-feedback">
+                <div *ngIf="f.inputZip.errors.required">Pin code is required</div>
+                <div *ngIf="f.inputZip.errors.minlength">Not a valid pin</div>
+            </div>
+          </div>
+                     <button  type="submit" class="btn btn-primary mt-2">Proceed Order</button>       
+    
+    </form>
+
+</div>

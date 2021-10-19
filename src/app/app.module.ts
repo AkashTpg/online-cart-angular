@@ -12,6 +12,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Router } from '@angular/router';
 import { RatingPipe } from './_helper/rating.pipe';
 import { OrderHistoryComponent } from './order-history/order-history.component';
+import { ProductCartComponent } from './product-cart/product-cart.component';
+import { ProductOrderComponent } from './product-order/product-order.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { OrderHistoryComponent } from './order-history/order-history.component';
     LoginComponent,
     RegisterComponent,
 	RatingPipe,
- OrderHistoryComponent
+ OrderHistoryComponent,
+ ProductCartComponent,
+ ProductOrderComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +34,7 @@ import { OrderHistoryComponent } from './order-history/order-history.component';
     ReactiveFormsModule,
     FormsModule,
     RouterModule,
-    HttpClientModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
