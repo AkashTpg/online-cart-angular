@@ -79,7 +79,7 @@
           <div class="form-group mt-2 ">
             <label for="inputZip">Pin code</label>
             <input type="text" class="form-control"formControlName="inputZip"[ngClass]="{ 'is-invalid': submitted && f.inputZip.errors }">
-            <div *ngIf="submitted && f.inputCity.errors" class="invalid-feedback">
+            <div *ngIf="submitted && f.inputZip.errors" class="invalid-feedback">
                 <div *ngIf="f.inputZip.errors.required">Pin code is required</div>
                 <div *ngIf="f.inputZip.errors.minlength">Not a valid pin</div>
             </div>
