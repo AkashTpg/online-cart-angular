@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { OrderHistoryService } from '../_services/order-history.service';
 
 @Component({
@@ -11,7 +12,7 @@ export class OrderHistoryComponent implements OnInit {
 
   orderHistoryList;
 
-  constructor(private _router: Router, private _orderHistoryService: OrderHistoryService) { }
+  constructor(private _router: Router, private _orderHistoryService: OrderHistoryService,  private toastr: ToastrService) { }
 
   ngOnInit(): void {
     if (localStorage.hasOwnProperty('token')) {
@@ -23,7 +24,7 @@ export class OrderHistoryComponent implements OnInit {
         error => console.error('Error: ', error)
       )
     } else {
-      alert("User not logged in. Please login first!!!")
+      this.toastr.error('User not logged in. Please login first!!!',"Error", {progressBar: true, closeButton: true})
       this._router.navigate(['/','login']);
     }
   }

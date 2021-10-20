@@ -5,6 +5,7 @@ import { LoginService } from './login.service';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AppComponent } from '../app.component';
+import { ToastrService } from 'ngx-toastr';  
 
 
 
@@ -20,7 +21,7 @@ export class LoginComponent implements OnInit {
   showLogin;
 
 
-  constructor(private _loginService: LoginService, private fb: FormBuilder,  private _router: Router, private appComponent: AppComponent) {
+  constructor(private _loginService: LoginService, private fb: FormBuilder,  private _router: Router, private appComponent: AppComponent,  private toastr: ToastrService) {
     this.loginForm = new FormGroup({
       'email': new FormControl('', Validators.required),
       'password': new FormControl('', Validators.required),
@@ -40,12 +41,12 @@ export class LoginComponent implements OnInit {
             console.log('get token: ', localStorage.getItem('token'));
             this._router.navigate(['/','home']);
           } else {
-            alert('Credentials are incorrect');
+            this.toastr.error('Credentials are incorrect',"Error", {progressBar: true, closeButton: true})
           }
         },
         error => {
           console.error('Error: ', error)
-          alert('Error encountered. Please try after sometime');
+          this.toastr.error('Error encountered. Please try after sometime',"Error", {progressBar: true, closeButton: true})
         }
       )
     }

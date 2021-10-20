@@ -14,6 +14,8 @@ import { RatingPipe } from './_helper/rating.pipe';
 import { OrderHistoryComponent } from './order-history/order-history.component';
 import { ProductCartComponent } from './product-cart/product-cart.component';
 import { ProductOrderComponent } from './product-order/product-order.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,13 @@ import { ProductOrderComponent } from './product-order/product-order.component';
     ReactiveFormsModule,
     FormsModule,
     RouterModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot({
+      timeOut: 10000,
+      positionClass: 'toast-top-right',
+    }
+    ), // ToastrModule added
   ],
   providers: [],
   bootstrap: [AppComponent]
