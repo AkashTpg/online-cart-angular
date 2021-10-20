@@ -20,8 +20,9 @@
         </div>
         <div class="form-group">
           <label for="email">Email:</label><br>
-          <input required formControlName="email" type="text" id="email" name="email" class="form-control"><br>
-          <div class="alert alert-danger" *ngIf="registerForm.controls['email'].invalid && registerForm.controls['email'].touched" >Email is required</div>
+          <input required formControlName="email" type="text" id="email" name="email" class="form-control" [email]="true"><br>
+          <div class="alert alert-danger" *ngIf="registerForm.controls['email'].invalid && registerForm.controls['email'].touched && registerForm.value.email == ''">Email is required</div>
+          <div class="alert alert-danger" *ngIf="registerForm.controls['email'].invalid && registerForm.controls['email'].touched && registerForm.value.email != ''">Email not valid.</div> 
         </div>
         <div class="form-group">
           <label for="password">Password:</label><br>
